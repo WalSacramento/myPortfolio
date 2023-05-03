@@ -1,17 +1,17 @@
 .navbar {
   font-family: 'Poppins', sans-serif;
 
-  background: #181824;
+  background: var(--darkColor);
   display: flex;
-  border-bottom: 1px solid #7562e0;
+  border-bottom: 1px solid var(--primaryColor);
 
   .title {
-    color: #7562e0;
+    color: var(--primaryColor);
   }
   .navLink {
     color: #ffffff;
     &:hover {
-      color: #7562e0;
+      color: var(--primaryColor);
     }
   }
 }

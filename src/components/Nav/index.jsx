@@ -6,7 +6,7 @@ import S from './styles.module.scss'
 
 export default function Navigation() {
   return (
-    <Navbar variant="dark" expand="lg" className={S.navbar}>
+    <Navbar sticky="top" variant="dark" expand="lg" className={S.navbar}>
       <Container fluid>
         <Navbar.Brand href="/" className={S.title}>
           Waldsson Sacramento

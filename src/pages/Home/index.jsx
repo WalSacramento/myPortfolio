@@ -1,3 +1,4 @@
+import AboutMe from "../../components/AboutMe";
 import Initial from "../../components/Initial";
 import Navigation from "../../components/Nav";
 
@@ -8,6 +9,8 @@ export default function Home (){
     <div>
     <Navigation/>
     <Initial/>
+    <div className={S.spacing}/>
+    <AboutMe/>
     </div>
   )
 }

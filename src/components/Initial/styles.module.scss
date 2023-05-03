@@ -1,7 +1,23 @@
-.initial{
+:root {
+  --lightColor: #f5f5f5;
+  --lowPriority: #848191;
+  --primaryColor: #bd93f9;
+  --secundaryColor: #181824;
+  --darkColor: #282a36;
+}
+
+:root {
+  --lightColor: #f5f5f5;
+  --lowPriority: #eeee;
+  --primaryColor: #00adb5;
+  --secundaryColor: #393e46;
+  --darkColor: #222831;
+}
+
+.initial {
   font-family: 'Poppins', sans-serif;
 
-  background: #181824;
+  background: var(--darkColor);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,30 +25,33 @@
   width: 100%;
   padding: 5%;
 
+  h1 {
+    color: var(--primaryColor);
+  } 
   .textInitial {
-    color: #fff;
-  width: 60%;
-
+    color: white;
+    width: 60%;
+    font-weight: 300;
   }
-  
+
   .imgInitial {
-    background-color: #7562E0;
+    background-color: var(--primaryColor);
     width: 25%;
     border-radius: 50%;
   }
 
   .btnAbout {
-    color: #fff;
-    border-color: #fff;
+    color: white;
+    border-color: white;
     &:hover {
-      color: #7562e0;
-      border-color: #7562E0;
+      color: var(--primaryColor);
+      border-color: var(--primaryColor);
     }
   }
   .btnProjects {
-    color: #fff;
-    background-color: #7562E0;
-    border-color: #7562E0;
+    color: white;
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
     &:hover {
       color: #7562e0;
       background-color: #fff;
@@ -40,7 +59,7 @@
     }
   }
 
-  .icon{
+  .icon {
     width: 1rem;
     margin-left: 0.1rem;
   }
