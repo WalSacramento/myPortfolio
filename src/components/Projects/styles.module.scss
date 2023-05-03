@@ -1,4 +1,4 @@
-.aboutMe {
+.projects {
   font-family: 'Poppins', sans-serif;
 
   background: var(--darkColor);
@@ -9,20 +9,18 @@
   width: 100%;
   padding: 5%;
 
+  .cardProjects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
   .title {
     color: var(--primaryColor);
-    // font-weight: bold;
   }
 
-  .text{
+  .text {
     color: white;
     font-weight: 300;
-  }
-
-  .cards {
-    display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
   }
 }

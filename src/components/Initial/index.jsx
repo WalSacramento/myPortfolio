@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button'
 import S from './styles.module.scss'
 
 export default function Initial() {
-
   return (
     <>
       <div className={S.initial}>
@@ -11,17 +10,14 @@ export default function Initial() {
           <h2>Olá, eu sou</h2>
           <h1>Waldsson Sacramento</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-            blanditiis omnis rem harum hic! Laborum sequi labore alias quam
-            fugit dolores mollitia quaerat. Nesciunt, quis numquam? Modi maiores
-            eveniet laboriosam.
+            Desenvolvedor Full-stack jovem e apaixonado por tecnologia, graduando em Sistemas de Informação na Universidade Federal de Alagoas - UFAL. Com conhecimento em React.js, JavaScript, HTML, CSS, Python, Java, C e Arduino, busco uma oportunidade de desenvolver minhas habilidades como Desenvolvedor Júnior.
           </p>
           <div>
-            <Button variant="outline" className={S.btnAbout}>
-              Sobre mim
-            </Button>{' '}
-            <Button variant="primary" className={S.btnProjects}>
-              Projetos
+            <Button href='https://www.linkedin.com/in/WaldssonSacramento' variant="outline" className={S.btnAbout}>
+              LinkedIn
+            </Button>
+            <Button href='https://github.com/WalSacramento' variant="primary" className={S.btnProjects}>
+              Github
             </Button>{' '}
           </div>
         </div>
