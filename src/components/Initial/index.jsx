@@ -18,7 +18,7 @@ export default function Initial() {
             </Button>
             <Button href='https://github.com/WalSacramento' variant="primary" className={S.btnProjects}>
               Github
-            </Button>{' '}
+            </Button>
           </div>
         </div>
         <img

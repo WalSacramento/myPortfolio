@@ -28,7 +28,7 @@
     border-color: var(--primaryColor);
     margin: 0.5rem;
     &:hover {
-      color: #7562e0;
+      color: var(--primaryColor);
       background-color: #fff;
       border-color: #fff;
     }
