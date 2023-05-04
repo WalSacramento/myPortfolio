@@ -1,5 +1,6 @@
 import AboutMe from "../../components/AboutMe";
 import Contact from "../../components/Contact";
+import Footer from "../../components/Footer";
 import Initial from "../../components/Initial";
 import Navigation from "../../components/Nav";
 import Projects from "../../components/Projects";
@@ -17,6 +18,7 @@ export default function Home (){
     <Projects/>
     <div className={S.spacing}/>
     <Contact/>
+    <Footer/>
     </div>
   )
 }

@@ -1,0 +1,16 @@
+.footer {
+  background-color: var(--darkColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+
+  .textFooter {
+    color: white;
+  }
+
+  .nameFooter {
+    color: var(--primaryColor);
+  }
+}
