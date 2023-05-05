@@ -62,7 +62,7 @@ export default function Contact() {
           </Button>
 
           <Button
-            href="waldsson.dev@gmail.com"
+            href="mailto:waldsson.dev@gmail.com"
             variant="outline"
             className={S.btnIcon}
           >
