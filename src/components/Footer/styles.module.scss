@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--darkColor);
+  background-color: var(--secundaryColor);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,10 +7,12 @@
   width: 100%;
 
   .textFooter {
+    margin-top: 1rem;
     color: white;
   }
 
   .nameFooter {
+    margin-top: 1rem;
     color: var(--primaryColor);
   }
 }

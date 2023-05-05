@@ -18,16 +18,16 @@ export default function Navigation() {
             style={{ maxHeight: '200px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1" className={S.navLink}>
+            <Nav.Link href="#home" className={S.navLink}>
               Home
             </Nav.Link>
-            <Nav.Link href="#action2" className={S.navLink}>
+            <Nav.Link href="#aboutMe" className={S.navLink}>
               Sobre Mim
             </Nav.Link>
-            <Nav.Link href="#action3" className={S.navLink}>
+            <Nav.Link href="#projects" className={S.navLink}>
               Projetos
             </Nav.Link>
-            <Nav.Link href="#action4" className={S.navLink}>
+            <Nav.Link href="#contact" className={S.navLink}>
               Contato
             </Nav.Link>
           </Nav>

@@ -28,6 +28,7 @@
 
     .buttons {
       display: flex;
+      flex-wrap: wrap;
     }
 
     .btnIcon {
@@ -85,6 +86,20 @@
           border-color: #fff;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 440px) {
+  .contact{
+    flex-direction: column;
+
+    .contactSocial {
+      width: 100%;
+    }
+
+    .contactForm {
+      width: 100%;
     }
   }
 }

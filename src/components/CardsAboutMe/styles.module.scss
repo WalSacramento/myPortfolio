@@ -1,18 +1,33 @@
 .card {
   height: 10rem;
-    width: 10rem;
-    background-color: var(--secundaryColor);
-    display: flex;
-    margin: 1rem;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  width: 10rem;
+  background-color: var(--secundaryColor);
+  display: flex;
+  margin: 1rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   .cardTitle {
     color: white;
-
   }
 
   .cardIcon {
     height: 4rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .card {
+    height: 5rem;
+    width: 5rem;
+
+    .cardTitle {
+      display: none;
+
+    }
+
+    .cardIcon {
+      height: 3rem;
+    }
   }
 }

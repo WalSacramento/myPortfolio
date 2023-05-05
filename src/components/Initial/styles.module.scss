@@ -1,13 +1,5 @@
 :root {
   --lightColor: #f5f5f5;
-  --lowPriority: #848191;
-  --primaryColor: #bd93f9;
-  --secundaryColor: #181824;
-  --darkColor: #282a36;
-}
-
-:root {
-  --lightColor: #f5f5f5;
   --lowPriority: #eeee;
   --primaryColor: #00adb5;
   --secundaryColor: #393e46;
@@ -66,4 +58,21 @@
     width: 1rem;
     margin-left: 0.1rem;
   }
+}
+
+@media (max-width: 440px) {
+  .initial{
+    flex-direction: column-reverse;
+
+    .textInitial {
+      width: 100%;
+    }
+
+    .imgInitial {
+      width: 40%;
+    }
+
+  }
+  
+  
 }
