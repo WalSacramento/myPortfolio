@@ -4,6 +4,12 @@ import S from './styles.module.scss'
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 
+import linkedinIcon from '../../icons/linkedinIcon.svg'
+import gmailIcon from '../../icons/gmailIcon.svg'
+import githubIcon from '../../icons/githubIcon.svg'
+
+
+
 export default function Contact() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -44,23 +50,23 @@ export default function Contact() {
             variant="outline"
             className={S.btnIcon}
           >
-            <img src="src/icons/linkedinIcon.svg" alt="" />
+            <img src={linkedinIcon} alt="" />
           </Button>
 
           <Button
-            href="https://www.linkedin.com/in/WaldssonSacramento"
+            href="https://github.com/WalSacramento"
             variant="outline"
             className={S.btnIcon}
           >
-            <img src="src/icons/githubIcon.svg" alt="" />
+            <img src={githubIcon} alt="" />
           </Button>
 
           <Button
-            href="https://www.linkedin.com/in/WaldssonSacramento"
+            href="waldsson.dev@gmail.com"
             variant="outline"
             className={S.btnIcon}
           >
-            <img src="src/icons/gmailIcon.svg" alt="" />
+            <img src={gmailIcon} alt="" />
           </Button>
         </div>
       </div>

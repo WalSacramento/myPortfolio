@@ -73,19 +73,19 @@ export default function AboutMe() {
       <div className={S.aboutMe}>
         <h1 className={S.title}>Sobre mim:</h1>
         <p className={S.text}>
-          Com experiência em projetos acadêmicos e pessoais, estou sempre em busca de ampliar
-          meus conhecimentos e praticar minhas habilidades. Além disso, tive a
-          oportunidade de atuar como monitor em disciplinas de programação na
-          universidade, o que me permitiu compartilhar meus conhecimentos e
-          ajudar outros estudantes a desenvolver suas habilidades. 
+          Com experiência em projetos acadêmicos e pessoais, estou sempre em
+          busca de ampliar meus conhecimentos e praticar minhas habilidades.
+          Além disso, tive a oportunidade de atuar como monitor em disciplinas
+          de programação na universidade, o que me permitiu compartilhar meus
+          conhecimentos e ajudar outros estudantes a desenvolver suas
+          habilidades.
         </p>
         <p className={S.text}>
-        Acredito que
-          posso trazer uma perspectiva jovem e entusiasta para qualquer equipe,
-          além de ser dedicado e focado em aprender e crescer profissionalmente.
-          Estou animado para usar minhas habilidades e paixão pela tecnologia
-          para ajudar a alcançar os objetivos de uma empresa e colaborar com uma
-          equipe de alta performance.
+          Acredito que posso trazer uma perspectiva jovem e entusiasta para
+          qualquer equipe, além de ser dedicado e focado em aprender e crescer
+          profissionalmente. Estou animado para usar minhas habilidades e paixão
+          pela tecnologia para ajudar a alcançar os objetivos de uma empresa e
+          colaborar com uma equipe de alta performance.
         </p>
 
         <h1 className={S.title}>Linguagens:</h1>
@@ -99,7 +99,7 @@ export default function AboutMe() {
           ))}
         </div>
 
-        <h1 className={S.title}>Tecnolgias:</h1>
+        <h1 className={S.title}>Tecnologias:</h1>
         <div className={S.cards}>
           {tecnologiesData.map((card, index) => (
             <CardsAboutMe
