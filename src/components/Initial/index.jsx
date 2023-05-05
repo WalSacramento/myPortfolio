@@ -2,6 +2,9 @@ import Button from 'react-bootstrap/Button'
 
 import S from './styles.module.scss'
 
+import fotoPerfil from '../../img/fotoPerfil.jpg'
+
+
 export default function Initial() {
   return (
     <>
@@ -23,7 +26,7 @@ export default function Initial() {
         </div>
         <img
           className={S.imgInitial}
-          src="src/img/fotoPerfil-removebg-preview.png"
+          src={fotoPerfil}
           alt="Foto de Perfil"
         />
       </div>
