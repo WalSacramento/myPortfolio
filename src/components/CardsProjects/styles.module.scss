@@ -2,6 +2,8 @@
   background-color: var(--secundaryColor);
   border-color: var(--primaryColor);
   margin: 1rem;
+  max-width: 300px;
+
 
   .title {
     color: var(--primaryColor);
@@ -37,4 +39,11 @@
 
 .cardProjects:hover {
   transform: scale(1.03);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
