@@ -73,10 +73,10 @@ export default function AboutMe() {
       <div className={S.aboutMe}>
         <h1 className={S.title}>Sobre mim:</h1>
         <p className={S.text}>
-          Com experiência em projetos acadêmicos e pessoais, estou sempre em
+          Com experiência em projetos acadêmicos, pessoais e freelancer, estou sempre em
           busca de ampliar meus conhecimentos e praticar minhas habilidades.
-          Além disso, tive a oportunidade de atuar como monitor em disciplinas
-          de programação na universidade, o que me permitiu compartilhar meus
+          Além disso, tive a oportunidade de atuar como monitor nas disciplinas
+          de programação 1, 2 e 3 na universidade, o que me permitiu compartilhar meus
           conhecimentos e ajudar outros estudantes a desenvolver suas
           habilidades.
         </p>

@@ -12,13 +12,13 @@ export default function Projects() {
     {
       title: 'DevBooks',
       description: 'Nesse projeto, utilizei várias tecnologias e ferramentas como: Typescript, React, Styled Components, Axios. Um dos destaques do projeto é o consumo de dados da API do Google Books.',
-      imgSrc: apiCrudImg,
+      imgSrc: devBooksImg,
       repoSrc: 'https://github.com/WalSacramento/APIREST_Prisma_e_Nodejs'
     },
     {
       title: 'ApiREST',
       description: 'Através dessa API, é possível a execução de operações CRUD (Create, Read, Update, Delete) em recursos específicos. Nesse projeto utilizei as tecnologias: Node.js, Express, Prisma e SQLite.',
-      imgSrc: devBooksImg,
+      imgSrc: apiCrudImg,
       deploySrc: 'https://devbooks-tau.vercel.app/',
       repoSrc: 'https://github.com/WalSacramento/devbooks'
     },
