@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../data/site';
+import { about, hobbies, education } from '../data/portfolio';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const skills = (await getCollection('skills')).sort((a, b) => a.data.order - b.data.order);
+
+const activeSocials = site.socials.filter((s) => s.href);
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="hero container">
+    <p class="eyebrow">// olá, eu sou</p>
+    <h1>{site.name}</h1>
+    <p class="lead">Desenvolvedor web. Construo páginas e aplicações para a web e registro meu fluxo de trabalho e minhas ideias de projetos.</p>
+    <div class="actions">
+      <a class="btn primary" href="/blog">Ler o blog</a>
+      <a class="btn" href="/skills">Ver skills</a>
+      {site.resumeHref && <a class="btn" href={site.resumeHref}>Currículo</a>}
+    </div>
+    {activeSocials.length > 0 && (
+      <ul class="socials">
+        {activeSocials.map((s) => <li><a href={s.href} target="_blank" rel="me noopener">{s.label}</a></li>)}
+      </ul>
+    )}
+  </section>
+
+  <!-- Sobre -->
+  <section class="section" id="sobre">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">01. sobre</p>
+        <h2>Sobre mim</h2>
+      </div>
+      <div class="prose">
+        {about.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills (preview) -->
+  <section class="section" id="skills">
+    <div class="container">
+      <p class="eyebrow">02. skills</p>
+      <div class="heading-row">
+        <h2>Ferramentas que uso</h2>
+        <a href="/skills">Ver todas →</a>
+      </div>
+      <ul class="grid cards">
+        {skills.map((s) => (
+          <li class="card">
+            <span class="tag">{s.data.category}</span>
+            <h3>{s.data.name}</h3>
+            <p class="muted">{s.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Hobbies -->
+  <section class="section" id="hobbies">
+    <div class="container">
+      <p class="eyebrow">03. hobbies</p>
+      <h2>Fora do código</h2>
+      <ul class="grid icons">
+        {hobbies.map((h) => (
+          <li class="card icon-card">
+            <img src={h.icon} alt="" width="48" height="48" loading="lazy" />
+            <span>{h.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Formação -->
+  <section class="section" id="formacao">
+    <div class="container">
+      <p class="eyebrow">04. formação</p>
+      <h2>Formação acadêmica</h2>
+      <ol class="timeline">
+        {education.map((e) => (
+          <li>
+            <img src={e.icon} alt="" width="40" height="40" loading="lazy" />
+            <div>
+              <h3>{e.title}</h3>
+              <p class="muted">{e.institution} · {e.period}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Blog (preview) -->
+  {posts.length > 0 && (
+    <section class="section" id="blog">
+      <div class="container">
+        <p class="eyebrow">05. blog</p>
+        <div class="heading-row">
+          <h2>Últimos posts</h2>
+          <a href="/blog">Todos os posts →</a>
+        </div>
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}`}>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })}
+                </time>
+                <h3>{post.data.title}</h3>
+                <p class="muted">{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <!-- Contato -->
+  <section class="section" id="contato">
+    <div class="container">
+      <p class="eyebrow">06. contato</p>
+      <h2>Vamos conversar?</h2>
+      <p class="muted">Para propostas, dúvidas ou sugestões, escreva para o e-mail abaixo.</p>
+      <a class="btn primary" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: clamp(4rem, 12vw, 8rem) 0 clamp(3rem, 8vw, 5rem);
+  }
+  .lead {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: var(--prose-width);
+    margin-bottom: 2rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .socials {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    font-size: 0.95rem;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+  }
+  .prose p {
+    color: var(--text-muted);
+    max-width: var(--prose-width);
+  }
+  .heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .icons {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: border-color 0.2s ease;
+  }
+  .card:hover {
+    border-color: var(--accent);
+  }
+  .card h3 {
+    margin-top: 0.5rem;
+  }
+  .card p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .icon-card img {
+    filter: invert(1) opacity(0.9);
+  }
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .timeline li {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  .timeline h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+  .timeline p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .post-list a {
+    display: block;
+    color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .post-list a:hover {
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+  .post-list h3 {
+    margin: 0.25rem 0;
+  }
+  .post-list p {
+    margin: 0;
+  }
+  time,
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+  .tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid rgba(57, 255, 20, 0.35);
+    border-radius: 999px;
+    background: var(--accent-dim);
+  }
+  @media (max-width: 720px) {
+    .two-col {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

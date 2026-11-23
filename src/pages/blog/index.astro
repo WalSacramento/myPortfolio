@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title="Blog — Waldsson Sacramento" description="Posts sobre meu fluxo de desenvolvimento, ferramentas e ideias de projetos.">
+  <section class="container page-head">
+    <p class="eyebrow">// blog</p>
+    <h1>Blog</h1>
+    <p class="muted">Fluxo de desenvolvimento, ferramentas e ideias de projetos.</p>
+  </section>
+
+  <section class="container">
+    {posts.length === 0 && <p class="muted">Nenhum post publicado ainda.</p>}
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
+            </time>
+            <h2>{post.data.title}</h2>
+            <p class="muted">{post.data.description}</p>
+            {post.data.tags.length > 0 && (
+              <ul class="tags">
+                {post.data.tags.map((t) => <li>#{t}</li>)}
+              </ul>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding: clamp(3rem, 8vw, 5rem) 0 2rem;
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .post-list a {
+    display: block;
+    color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: border-color 0.2s ease;
+  }
+  .post-list a:hover {
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+  .post-list h2 {
+    font-size: 1.4rem;
+    margin: 0.4rem 0;
+  }
+  .post-list p {
+    margin: 0;
+  }
+  time {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>

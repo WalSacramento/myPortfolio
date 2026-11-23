@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const entries = (await getCollection('skills')).sort((a, b) => a.data.order - b.data.order);
+
+// Agrupa por categoria, mantendo a ordem de aparição.
+const groups = entries.reduce<Record<string, typeof entries>>((acc, entry) => {
+  (acc[entry.data.category] ??= []).push(entry);
+  return acc;
+}, {});
+
+const rendered = await Promise.all(entries.map(async (e) => ({ id: e.id, Content: (await render(e)).Content })));
+const contentById = Object.fromEntries(rendered.map((r) => [r.id, r.Content]));
+---
+
+<BaseLayout title="Skills — Waldsson Sacramento" description="Skills, ferramentas e práticas que uso no meu fluxo de desenvolvimento.">
+  <section class="container page-head">
+    <p class="eyebrow">// skills</p>
+    <h1>Skills e ferramentas</h1>
+    <p class="muted">As skills e práticas que uso no desenvolvimento, versionadas junto com este site.</p>
+  </section>
+
+  <section class="container groups">
+    {Object.entries(groups).map(([category, items]) => (
+      <div class="group">
+        <h2>{category}</h2>
+        <ul class="list">
+          {items.map((item) => {
+            const Content = contentById[item.id];
+            return (
+              <li class="card">
+                <div class="head">
+                  <h3>{item.data.name}</h3>
+                  <span class="level">{item.data.level}</span>
+                </div>
+                <p class="muted">{item.data.description}</p>
+                <div class="prose"><Content /></div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding: clamp(3rem, 8vw, 5rem) 0 2rem;
+  }
+  .groups {
+    display: grid;
+    gap: 3rem;
+    padding-bottom: 5rem;
+  }
+  .group h2 {
+    font-size: 1.1rem;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .head h3 {
+    margin: 0;
+  }
+  .level {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+  }
+  .card > p {
+    margin: 0.5rem 0 0.75rem;
+  }
+  .prose :global(p),
+  .prose :global(li) {
+    color: #c8c8c8;
+    font-size: 0.95rem;
+  }
+  .prose :global(ul) {
+    padding-left: 1.2rem;
+  }
+</style>
